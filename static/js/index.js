@@ -80,7 +80,7 @@ $(document).ready(function() {
 $(document).ready(function() {
 
   // === Load Transparent Object Logs ===
-  const NUM_LOGS = 2;  // Update this number based on your actual log count
+  const NUM_LOGS = 170;  // Update this number based on your actual log count
   const logContainer = document.getElementById('log-container');
 
   for (let i = 0; i < NUM_LOGS; i++) {

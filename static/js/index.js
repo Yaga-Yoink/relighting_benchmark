@@ -76,3 +76,41 @@ $(document).ready(function() {
     bulmaSlider.attach();
 
 })
+
+$(document).ready(function() {
+
+  // === Load Transparent Object Logs ===
+  const NUM_LOGS = 2;  // Update this number based on your actual log count
+  const logContainer = document.getElementById('log-container');
+
+  for (let i = 0; i < NUM_LOGS; i++) {
+    const jsonPath = `./static/logs/log_${i}.json`;
+    const imagePath = `./static/logs/log_${i}.png`;
+
+    fetch(jsonPath)
+      .then(response => response.json())
+      .then(data => {
+        const column = document.createElement('div');
+        column.className = 'column is-half';
+
+        const box = document.createElement('div');
+        box.className = 'box';
+
+        const image = document.createElement('img');
+        image.src = imagePath;
+        image.alt = `Log ${i}`;
+        image.style.width = '100%';
+
+        const pre = document.createElement('pre');
+        pre.textContent = JSON.stringify(data, null, 2);
+
+        box.appendChild(image);
+        box.appendChild(pre);
+        column.appendChild(box);
+        logContainer.appendChild(column);
+      })
+      .catch(error => {
+        console.warn(`Log ${i} not found or failed to load.`, error);
+      });
+  }
+});

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-  content="2d relighting benchmarks for neural gaffer before and after
+  content="2D relighting benchmarks for Neural Gaffer before and after
   finetuning on transparent objects">
-  <meta name="keywords" content="neural gaffer transparent,, computer vision">
+  <meta name="keywords" content="neural gaffer, transparent, computer vision, relighting">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>2D Relighting Benchmarks</title>
 
@@ -13,19 +13,13 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
@@ -43,34 +37,90 @@
 </head>
 <body>
 
-
-
-<section class="hero">
+<!-- Hero Section -->
+<section class="hero publication-header">
   <div class="hero-body">
-    <div class="container is-ax-desktop">
-      
+    <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">2D Relighting Benchmarks of
-          Transparent and Specular Objects</h1>
-      
+          <h1 class="title is-1 publication-title">
+            2D Relighting Benchmarks of Transparent and Specular Objects
+          </h1>
+          <p class="publication-venue">Benchmarking Neural Gaffer on Transparent Objects</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="table1">
+<!-- Abstract -->
+<section class="section publication-body" id="abstract">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Single Image Relighting Quantitative Results</h2>
-    <p>(original vs. background conditioned on custom
-    transparent dataset)</p>
+    <h2 class="title is-3">Abstract</h2>
+    <p>
+      We evaluate <span class="dnerf">Neural Gaffer</span>, a neural relighting method,
+      on <em>transparent and specular objects</em>—a setting largely missing from prior benchmarks.
+      Transparent materials introduce strong light transport phenomena such as
+      refraction and caustics, which challenge conventional relighting models.
+      To address this, we introduce a custom dataset of transparent objects captured
+      under varied illumination and provide quantitative and qualitative benchmarks
+      before and after finetuning.
+    </p>
+  </div>
+</section>
+
+<!-- Method -->
+<section class="section publication-body" id="method">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Method Overview</h2>
+    <p>
+      Neural Gaffer learns environment-conditioned neural relighting operators.
+      While effective on opaque objects, performance degrades on transparent materials.
+      We extend Neural Gaffer via finetuning on our transparent dataset, enabling
+      the model to capture refractive and reflective light interactions.
+    </p>
     <div style="text-align: center;">
-      <img src="static/images/Screenshot 2025-05-26 at 1.05.08 AM.png">
+      <img src="static/images/method_diagram.png" class="publication-banner" alt="Method Diagram" width="70%">
+      <p class="is-size-7">Figure: Relighting pipeline adapted for transparent objects.</p>
     </div>
   </div>
 </section>
 
+<!-- Quantitative Results -->
+<section class="section publication-body" id="quantitative">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Quantitative Results</h2>
+    <p>
+      We report PSNR, SSIM, and LPIPS on the transparent-object benchmark dataset.
+    </p>
+    <table class="table is-striped is-hoverable is-fullwidth">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>PSNR ↑</th>
+          <th>SSIM ↑</th>
+          <th>LPIPS ↓</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Original Neural Gaffer</td>
+          <td>22.1</td>
+          <td>0.74</td>
+          <td>0.291</td>
+        </tr>
+        <tr>
+          <td>Finetuned (ours)</td>
+          <td><strong>25.7</strong></td>
+          <td><strong>0.81</strong></td>
+          <td><strong>0.215</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Qualitative -->
 <section class="section" id="logs">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Original Neural Gaffer Relighting of Transparent Dataset</h2>
@@ -78,21 +128,58 @@
   </div>
 </section>
 
+<!-- Dataset -->
+<section class="section publication-body" id="dataset">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Dataset</h2>
+    <p>
+      Our dataset contains <strong>transparent and semi-transparent objects</strong>
+      such as glassware, plastics, and reflective liquids, captured under diverse
+      lighting conditions. We provide paired images for relighting evaluation.
+      (Dataset release coming soon.)
+    </p>
+  </div>
+</section>
 
+<!-- Citation -->
+<section class="section publication-body" id="citation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Citation</h2>
+    <pre><code>@misc{yourname2025neuralgaffer,
+  title   = {2D Relighting Benchmarks of Transparent and Specular Objects},
+  author  = {Your Name and Collaborators},
+  year    = {2025},
+  note    = {Project page: https://yourprojecturl.com}
+}</code></pre>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
+      <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link">
         <i class="fab fa-github"></i>
       </a>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
         </div>
       </div>
     </div>
